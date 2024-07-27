@@ -20,16 +20,31 @@ const Main = () => {
                     </div>
                     <div className='card'>
                         <p>222non possipsam natus rem. Accusamus dot, ratione repellendus!</p>
-                        <img src={assets.compass_icon} alt=""/>
+                        <img src={assets.bulb_icon} alt=""/>
                     </div>
                     <div className='card'>
                         <p>333non possipsam natus rem. Accusamus dot, ratione repellendus!</p>
-                        <img src={assets.compass_icon} alt=""/>
+                        <img src={assets.message_icon} alt=""/>
                     </div>
                     <div className='card'>
                         <p>444non possipsam natus rem. Accusamus dot, ratione repellendus!</p>
-                        <img src={assets.compass_icon} alt=""/>
+                        <img src={assets.code_icon} alt=""/>
                     </div>
+                </div>
+
+                <div className='main-bottom'>
+                    <div className='search-box'>
+                        <input type='text' placeholder='Enter a prompt here'/>
+                        <div>
+                            <img src={assets.gallery_icon} alt=""/>
+                            <img src={assets.mic_icon} alt=""/>
+                            <img src={assets.send_icon} alt=""/>
+                        </div>
+                    </div>
+                        <p className='bottom-info'>
+                            Lorem ipsum dolor sit ametcing elit. Accusamus aoluptatibus voluptatum? Quis?
+                        </p>
+
                 </div>
             </div>
         </div>
