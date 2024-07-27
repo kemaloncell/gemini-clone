@@ -15,7 +15,14 @@ const ContextProvider = (props) => {
 
 
     const onSent = async (props) => {
-        await run(props)
+        setResultData('') // result data will be reset so that our prev response will be removed from our state variable
+        setLoading(true)
+        setShowResult(true)
+        const res = await run(input)
+        setResultData(res)
+        setLoading(false)
+        setInput('')
+
     }
 
     const ContextValue = {
