@@ -1,7 +1,19 @@
 import './Main.css'
 import {assets} from "../../assets/assets.js";
+import {useContext} from "react";
+import {Context} from "../../context/Context.jsx";
 
 const Main = () => {
+    const {
+        onSent,
+        recentPrompt,
+        showResult,
+        loading,
+        resultData,
+        input,
+        setInput,
+    } = useContext(Context)
+
     return(
         <div className='main'>
             <div className='nav'>
@@ -15,19 +27,19 @@ const Main = () => {
                 </div>
                 <div className='cards'>
                     <div className='card'>
-                        <p>11 non possipsam natus rem. Accusamus dot, ratione repellendus!</p>
+                        <p>Product Description</p>
                         <img src={assets.compass_icon} alt=""/>
                     </div>
                     <div className='card'>
-                        <p>222non possipsam natus rem. Accusamus dot, ratione repellendus!</p>
+                        <p>Career fields</p>
                         <img src={assets.bulb_icon} alt=""/>
                     </div>
                     <div className='card'>
-                        <p>333non possipsam natus rem. Accusamus dot, ratione repellendus!</p>
+                        <p>Technological developments</p>
                         <img src={assets.message_icon} alt=""/>
                     </div>
                     <div className='card'>
-                        <p>444non possipsam natus rem. Accusamus dot, ratione repellendus!</p>
+                        <p>Knowledge test</p>
                         <img src={assets.code_icon} alt=""/>
                     </div>
                 </div>
@@ -42,7 +54,7 @@ const Main = () => {
                         </div>
                     </div>
                         <p className='bottom-info'>
-                            Lorem ipsum dolor sit ametcing elit. Accusamus aoluptatibus voluptatum? Quis?
+                            Gemini can show incorrect information about various topics, including people, so make sure to check if the answers it gives are accurate.
                         </p>
 
                 </div>
