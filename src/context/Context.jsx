@@ -24,6 +24,7 @@ const ContextProvider = (props) => {
         setLoading(true)
         setShowResult(true)
         setRecentPrompt(input)
+        setPrevPrompts(prev =>[...prev, input]) // add all inputs and last added input
         const res = await run(input)
         let resArray = res.split('**')
         let partsResponseBold;
