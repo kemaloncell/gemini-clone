@@ -18,6 +18,7 @@ const ContextProvider = (props) => {
         setResultData('') // result data will be reset so that our prev response will be removed from our state variable
         setLoading(true)
         setShowResult(true)
+        setRecentPrompt(input)
         const res = await run(input)
         setResultData(res)
         setLoading(false)
