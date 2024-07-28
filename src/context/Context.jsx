@@ -13,6 +13,11 @@ const ContextProvider = (props) => {
     const [resultData, setResultData] = useState('')
 
 
+    const delayPara = (index, nextWord) => {
+          setTimeout(() => {
+            setResultData(prev => prev + nextWord)
+          },75*index)
+    }
 
     const onSent = async (props) => {
         setResultData('') // result data will be reset so that our prev response will be removed from our state variable
@@ -20,7 +25,24 @@ const ContextProvider = (props) => {
         setShowResult(true)
         setRecentPrompt(input)
         const res = await run(input)
-        setResultData(res)
+        let resArray = res.split('**')
+        let partsResponseBold;
+        for (let i = 0; i < resArray.length; i++)
+        {
+            if(i === 0 || i%2 !== 1){
+                partsResponseBold += resArray[i]
+            }else{
+                partsResponseBold += '<b>' + resArray[i] + '</b>'
+            }
+        }
+        let splitResponseNewLine = partsResponseBold.split('*').join('</br>')
+        setResultData(splitResponseNewLine)
+        let newResponseArray = splitResponseNewLine.split(' ')
+        for (let i = 0; i<newResponseArray.length; i++)
+        {
+            const nextWord = newResponseArray[i]
+            delayPara(i, nextWord+' ')
+        }
         setLoading(false)
         setInput('')
 
