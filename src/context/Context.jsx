@@ -19,15 +19,29 @@ const ContextProvider = (props) => {
           },75*index)
     }
 
-    const onSent = async (props) => {
+    const newChat = () => {
+        setLoading(false)
+        setShowResult(false)
+    }
+    const onSent = async (prompt) => {
         setResultData('') // result data will be reset so that our prev response will be removed from our state variable
         setLoading(true)
         setShowResult(true)
         setRecentPrompt(input)
-        setPrevPrompts(prev =>[...prev, input]) // add all inputs and last added input
-        const res = await run(input)
-        let resArray = res.split('**')
-        let partsResponseBold;
+
+        let response;
+        if(prompt !== undefined){
+            response = await run(prompt)
+            setRecentPrompt(prompt)
+        }else
+        {
+            setPrevPrompts(prev =>[...prev, input]) // add all inputs and last added input
+            setRecentPrompt(input)
+            response = await run(input)
+        }
+
+        let resArray = response.split('**')
+        let partsResponseBold = '';
         for (let i = 0; i < resArray.length; i++)
         {
             if(i === 0 || i%2 !== 1){
@@ -60,7 +74,7 @@ const ContextProvider = (props) => {
         resultData,
         input,
         setInput,
-
+        newChat
     }
 
     return (
